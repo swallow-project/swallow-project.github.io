@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>Swallow Project Status Page</title>
+</head>
+
+<h2> Progress updates </h2>
+
+<ol class="news">
+	<li id="nOS_Release"><h2>Update: Swallow nOS <a href="https://github.com/simonhollis/swallow-nos">v0.1 released on github</a>.</h2>
+
+	<li id="New_Wiki_and_API"><h2>New wiki and API documentation!</h2>The Swallow documentation <a href="https://wikis.bris.ac.uk/display/Swallow/">wiki</a> and <a href="http://www.cs.bris.ac.uk/Research/Micro/Swallow/doxygen/html/files.html">API references</a> are now available.
+
+	<li id="288_core_boot"><h2>We have a new ethernet booting system!</h2> (27th March 2013): In our most recent experiment, we were able to boot 288 cores of the Swallow system via tftp in just 4.4 seconds. Previously, this would have been impossible due to a JTAG programming limit with the older tools of 127 cores and even smaller systems took minutes to program. 
+		<p>	  You can <a href="https://www.youtube-nocookie.com/embed/kUo11tTeYK0?rel=0">watch a video of the blisteringly-fast load!</a></p><p><iframe width="300" height="200" src="http://www.youtube-nocookie.com/embed/kUo11tTeYK0?rel=0" frameborder="0" allowfullscreen></iframe></p>
+
+  <li id="news_1342396800000"><h2><a href="/Research/Micro/news.jsp#news_1342396800000">Video of 112 cores and 615 threads for only 29 Watts!</a></h2><p><iframe width="300" height="200" src="http://www.youtube-nocookie.com/embed/5vdcmG1-Oso?rel=0" frameborder="0" allowfullscreen></iframe></p>
+  <li id="news_1342396800000"><h3>16th July 2012</h3><h2><a href="/Research/Micro/news.jsp#news_1342396800000">16-core research board array keeps growing</a></h2>
+  <li id="news_1334534400000"><h3>16th April 2012</h3><h2><a href="/Research/Micro/news.jsp#news_1334534400000">First 16-core research boards arrive</a></h2>
+</ol>
+
+
+
+
+
+<h1>Swallow Many-core Research Project</h1>
+
+<p><center>
+<img src="http://www.cs.bris.ac.uk/Research/Micro/img/16-core-boards/eight-board-stack-sm.jpg" alt="Eight board stack" />
+</center></p>
+
+<p><strong>Page contents</strong>
+
+<ul class="bullet">
+<li><a href="#introduction">Introduction</a></li>
+<li><a href="#team">Research team</a></li>
+<li><a href="#gallery">Gallery</a></li>
+<li><a href="https://wikis.bris.ac.uk/display/Swallow/">Swallow Wiki</a>
+</ul></p>
+
+<a name="introduction"></a>
+<h2>Update: Swallow nOS <a href="https://github.com/simonhollis/swallow-nos">v0.1 released on github</a>.</h2>
+
+<h2>Update: Swallow wiki and APIs now live!</h2>
+<p>
+The Swallow documentation <a href="https://wikis.bris.ac.uk/display/Swallow/">wiki</a> and <a href="http://www.cs.bris.ac.uk/Research/Micro/Swallow/doxygen/html/files.html">API references</a> are now available.
+</p>
+
+<h2>Introduction to Swallow</h2>
+
+<p> We are working on the production of a 480 processor embedded system, based
+on the XMOS XS1 architecture.  The system will be used to explore how large
+numbers of lightweight (500MHz x 8 threads x 64kB store/core +&nbsp; a fast
+inter-core interconnect) can be effectively used. The platform is designed to
+allow energy monitoring of both the cores and the communication, with the aim
+of producing a system that can illustrate the energy use of parallel,
+communicating algorithms.</p>
+
+<p>
+Our research objectives are:
+<ul class="bullet">
+<li>Investigate programming models for large-scale parallelism.</li>
+<li>Investigate the energy consumption in many-core systems, in particular the balance between computation and communication.</li>
+<li>Provide a platform for understanding the difficulties in composing many cores at the architectural level.</li>
+<li>Answer the question of "How much memory is needed per processing core", for a range of contemporary applications.</li>
+<li>Investigate what happens when a very high ratio of communication ability to storage is provided, and the impact on algorithms. </li>
+<li>Further development of highly parallel algorithms.</li>
+</ul>
+</p>
+
+<p>
+The work will be performed in three stages:
+<ol class="bullet">
+<li>The creation of a 112 processor system, based on the XMOS L2 dual-core chip.</li>
+<li>Addition of DRAM storage and fast, ethernet-based I/O.</li>
+<li>Expansion to 480 cores.</li>
+</ol>
+</p>
+
+<a name="team"></a>
+<h2>Research Team</h2>
+
+<h3>Academic staff</h3>
+
+<p>
+<ul class="people">
+  <li><a href="http://www.cs.bris.ac.uk/home/simon"><img src="/Research/Micro/img/people/Simon_Hollis.jpg" title="Dr Simon Hollis" alt="Dr Simon Hollis's photo" /></a><br /><a href="http://www.cs.bris.ac.uk/home/simon">Dr Simon Hollis</a></li>
+  <li><a href="http://www.cs.bris.ac.uk/home/dave"><img src="/Research/Micro/img/people/David_May.jpg" title="Prof. David May" alt="Prof. David May's photo" /></a><br /><a href="http://www.cs.bris.ac.uk/home/dave">Prof. David May</a></li>
+</ul>
+</p>
+
+<div style="clear:both"></div>
+<h3>Research Students</h3>
+
+<p>
+<ul class="people">
+  <li><a href="http://www.cs.bris.ac.uk/home/hanlon"><img src="/Research/Micro/img/people/Jamie_Hanlon.jpg" title="James Hanlon" alt="James Hanlon's photo" /></a><br /><a href="http://www.cs.bris.ac.uk/home/hanlon">James Hanlon</a></li>
+  <li><a href="http://www.stevekerrison.com/"><img src="/Research/Micro/img/people/Steve_Kerrison.jpg" title="Steve Kerrison" alt="Steve Kerrison's photo" /></a><br /><a href="http://www.stevekerrison.com/">Steve Kerrison</a></li>
+  <li><a href="http://jpallister.com/wiki/"><img src="/Research/Micro/img/people/James_Pallister.jpg" title="James Pallister" alt="James Pallister's photo" /></a><br /><a href="http://jpallister.com/wiki/">James Pallister</a></li>
+</ul>
+</p>
+
+<a name="gallery"></a>
+<h2>Gallery</h2>
+
+<p>
+<center>
+<a href="http://www.cs.bris.ac.uk/Research/Micro/img/16-core-boards/eight-board-stack-cabling.jpg">
+<img src="http://www.cs.bris.ac.uk/Research/Micro/img/16-core-boards/eight-board-stack-cabling-sm.jpg" alt="Eight board stack cabling" /></a>
+<a href="http://www.cs.bris.ac.uk/Research/Micro/img/16-core-boards/eight-board-stack-front.jpg">
+<img src="http://www.cs.bris.ac.uk/Research/Micro/img/16-core-boards/eight-board-stack-front-sm.jpg" alt="Eight board stack front" /></a>
+</center>
+</p>
+
+
+
+
+	</p>
+</footer>
+
+</div><!-- /container -->
+</div><!-- /page -->
+</body>
+</html>
+
+
+
