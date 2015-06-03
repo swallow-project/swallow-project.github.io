@@ -1,0 +1,6 @@
+Multiple licenses cover the works in this repository, depending on the part of the project being contained.
+
+In general, our documentation is covered by a Creative Commons License and our code by a GPL license, but you must check each directory to determine the applicable license.
+
+How to find the licenses:
+Each directory one up from the root swallow-project repository  contains the license for that directory. The file will be called "LICENSE" or "LICENSE.txt"
