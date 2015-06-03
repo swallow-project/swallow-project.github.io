@@ -1,0 +1,182 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Swallow Project : Using the tool chain</title>
+        <link rel="stylesheet" href="styles/site.css" type="text/css" />
+        <META http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    </head>
+
+    <body class="theme-default aui-theme-default">
+        <div id="page">
+            <div id="main" class="aui-page-panel">
+                <div id="main-header">
+                    <div id="breadcrumb-section">
+                        <ol id="breadcrumbs">
+                            <li class="first">
+                                <span><a href="index.html">Swallow Project</a></span>
+                            </li>
+                                                    <li>
+                                <span><a href="Introduction-to-the-Swallow-system_63571758.html">Introduction to the Swallow system</a></span>
+                            </li>
+                                                </ol>
+                    </div>
+                    <h1 id="title-heading" class="pagetitle">
+                                                <span id="title-text">
+                            Swallow Project : Using the tool chain
+                        </span>
+                    </h1>
+                </div>
+
+                <div id="content" class="view">
+                    <div class="page-metadata">
+                        
+        
+    
+        
+    
+        
+    
+            Created by <span class='author'> Simon Hollis</span>, last modified by <span class='editor'> Samuel Pagliarini</span> on Dec 04, 2014
+                        </div>
+                    <div id="main-content" class="wiki-content group">
+                    <h1 id="Usingthetoolchain-XMOStoolsvsSwallowtools">XMOS tools vs Swallow tools</h1>
+
+<p>There are two separate tool chains that are compatible with Swallow:</p>
+<ol>
+	<li>The vanilla <a href="https://www.xmos.com/support/xtools" class="external-link" rel="nofollow">XMOS XTimeComposer tools </a></li>
+	<li>The custom Swallow tool chain</li>
+</ol>
+
+
+<h2 id="Usingthetoolchain-XMOStools">XMOS tools</h2>
+
+<p>The standard XMOS tools are capable of compiling, debugging and analysing multi-core programs and they can be used with Swallow boards.<br />
+However, there are several major drawbacks to using the tool chain, including:</p>
+<ul>
+	<li>A hard-coded limit of ~100 processors, limiting us to a maximum of 6 Swallow slices</li>
+	<li>Compile times in the order of minutes for even a single board.</li>
+	<li>All debug via JTAG, which has a massive slowdown effect on the system.</li>
+	<li>They cannot support non-rectangular topologies.</li>
+</ul>
+
+
+<p>For these reasons, we have created a custom tool-chain, the Swallow tools.</p>
+
+
+<h2 id="Usingthetoolchain-Swallowtools">Swallow tools</h2>
+
+<p><a href="Swallow-Tool-Download_70257120.html">Link to Tool Download Instructions </a></p>
+
+<p>The Swallow tools are based on the XMOS tool chain, but re-implement the compilation front end, linking and output to a custom &quot;multi-core binary&quot; format.</p>
+
+<p>The key differences in using the tools are:</p>
+<ul>
+	<li>They are command-line only</li>
+	<li>The <code>main</code> function must be declared in a separate file to the remainder of the code (any number of source files are supported).</li>
+	<li>The main file must contain the line <code>#define MCMAIN</code></li>
+</ul>
+
+
+<p>The various tools are discussed later in this page, but the output is a single .sgb (Swallow Grid Binary) file, which can be immediately downloaded to the Swallow system.</p>
+
+<h3 id="Usingthetoolchain-Programmingandtracing">Programming and tracing</h3>
+
+<h4 id="Usingthetoolchain-QuickstartinstructionstoprogramSwallow"><a href="Tools-Quickstart_70257135.html">Quick start instructions to program Swallow </a></h4>
+
+<h4 id="Usingthetoolchain-Overview">Overview</h4>
+
+<p>The Swallow tools program Swallow systems over Ethernet. Debug output also comes over ethernet. Ethernet can also be used to stream in and stream out run-time data. The conventional JTAG connection is not required, except for the connection of a global reset signal.</p>
+
+<p>Swallow slices do not have built-in Ethernet support, so Ethernet connectivity is provided by the addition of a peripheral &quot;Etherboot&quot; board.</p>
+
+
+<h4 id="Usingthetoolchain-Etherboot">Etherboot</h4>
+
+<h5 id="Usingthetoolchain-Etherboothardware">Etherboot hardware</h5>
+
+<p>The Etherboot board connects to the Swallow network. It is always added to the S2 connection of the bottom-right Swallow slice (when their topology is visualised as a 2D grid).</p>
+
+<p>The top-left connector (P3) is used.</p>
+
+<p>A global reset connection must also be added to the Swallow boards to allow the Etherboot module to reset before programming. To do this, a single wire must be connected between pin <code>GPIO1</code> (top pin of P13) on the Etherboot board and pin 15 of the XTAG2 header on the top-left most Swallow slice in the array (pin 15 is the 8th pin up from the arrow marked '1' on P5).</p>
+
+<p>An XTAG2 is connected to the Etherboot module to allow programming and I/O, and an ethernet XSlice is added to the PCIe header on the Etherboot board.</p>
+
+<p>An ethernet cable is then connected to a host PC, as well as the USB connection of the XTAG2.</p>
+
+
+
+<h5 id="Usingthetoolchain-Etherbootsoftware">Etherboot software</h5>
+
+<p>The Etherboot slice runs a standard single-core XE binary, using the standard XMOS toolchain. The resulting binary is <code>etherboot.xe</code> and need only be compiled once for each Swallow topology.</p>
+
+<p>The etherboot code is available on github: <code>git@github.com:stevekerrison/sw_swallow_etherboot.git</code></p>
+
+<p>There is a Makefile included, but *before Making etherboot.xe, one needs to set the board configuration in:<br />
+<code>sw_swallow_etherboot/app_swallow_etherboot/src/swallow_etherboot_conf.h</code>*</p>
+
+
+<h5 id="Usingthetoolchain-CalculatingNodeIDs">Calculating NodeIDs</h5>
+
+
+<p>Node IDs are encoded like this:</p>
+
+<p>Row: Most extreme North is row 0, then proceeds south with +1 per row<br />
+Column: Most extreme West is column 0, then proceeds East with +4 per column</p>
+
+
+
+<p>Bit     | 15        | 14-8 | 7 - 2 | 1     | 0<br />
+Purpose | Is Xscope | Row  | Col   | Layer | Is Peripheral</p>
+
+<p>swallow_id() will take a core index (e.g. 5) and turn it into a node ID appropriate for the grid you're running on (yes, it's a runtime thing).</p>
+
+<p>Similarly, swallow_cvt_chanend() is used by the mcsc script to generate channel addresses then convert the top 16-bits into the real node ID.</p>
+
+<p>These are found in sc_swallow_communication; you will find some stuff in ledtest.xc in tool_xmp16_manycore/code that uses them. You can also look at swallow-mcsc.py and see how the code it generates uses them.</p>
+
+
+<h6 id="Usingthetoolchain-SDRAMaddition">SDRAM addition</h6>
+
+<p>ID: ID of connected node | 1<br />
+Program it seperately and give it this id.<br />
+.xn file in the etherboot code &quot;Swallow-Ethernet-v2&quot; code: the .xn file contains &quot;RoutingId=NNNN&quot;. This is the node ID.</p>
+
+<p>N.B. In order to get the network generated, this .xn file must include the XSCOPE entry of connected core ID, as shown in the example .xn</p>
+
+<ul>
+	<li>Steve needs to supply code for bringing up link on Swallow and link on peripheral board and program peripheral routing tables.<br />
+-&gt; Ask for credit. Get it. Tell to ask for credit. Ask. Get.</li>
+</ul>
+
+
+
+<h5 id="Usingthetoolchain-Helperfunctions">Helper functions</h5>
+
+<p><code>swallow_cvt_chanend()</code></p>
+
+<p>Take a chanend which assumes a physical index on the row/column indexing scheme and convert it to the real chanend.</p>
+                    </div>
+
+                                        <div class="pageSection group">
+                        <div class="pageSectionHeader">
+                            <h2 id="attachments" class="pageSectionTitle">Attachments:</h2>
+                        </div>
+
+                        <div class="greybox" align="left">
+                                                            <img src="images/icons/bullet_blue.gif" height="8" width="8" alt=""/>
+                                <a href="attachments/63571770/63930535.jpg">Ethernet_Board.JPG</a> (image/jpeg)
+                                <br/>
+                                                    </div>
+                    </div>
+                    
+                                                      
+                </div>             </div> 
+            <div id="footer" role="contentinfo">
+                <section class="footer-body">
+                    <p>Document generated by Confluence on Jun 03, 2015 14:10</p>
+                    <div id="footer-logo"><a href="http://www.atlassian.com/">Atlassian</a></div>
+                </section>
+            </div>
+        </div>     </body>
+</html>

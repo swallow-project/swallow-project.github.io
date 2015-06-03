@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Swallow Project : Swallow Tool Download</title>
+        <link rel="stylesheet" href="styles/site.css" type="text/css" />
+        <META http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    </head>
+
+    <body class="theme-default aui-theme-default">
+        <div id="page">
+            <div id="main" class="aui-page-panel">
+                <div id="main-header">
+                    <div id="breadcrumb-section">
+                        <ol id="breadcrumbs">
+                            <li class="first">
+                                <span><a href="index.html">Swallow Project</a></span>
+                            </li>
+                                                    <li>
+                                <span><a href="Introduction-to-the-Swallow-system_63571758.html">Introduction to the Swallow system</a></span>
+                            </li>
+                                                    <li>
+                                <span><a href="Using-the-tool-chain_63571770.html">Using the tool chain</a></span>
+                            </li>
+                                                </ol>
+                    </div>
+                    <h1 id="title-heading" class="pagetitle">
+                                                <span id="title-text">
+                            Swallow Project : Swallow Tool Download
+                        </span>
+                    </h1>
+                </div>
+
+                <div id="content" class="view">
+                    <div class="page-metadata">
+                        
+        
+    
+        
+    
+        
+    
+            Created by <span class='author'> Simon Hollis</span>, last modified on Dec 01, 2014
+                        </div>
+                    <div id="main-content" class="wiki-content group">
+                    <h2 id="SwallowToolDownload-Summary">Summary</h2>
+
+<p>Clone into a new workspace the following git repositories:</p>
+
+<p><code>git://github.com/stevekerrison/sc_swallow_communication</code><br />
+<code>git://github.com/stevekerrison/sw_swallow_xlinkboot</code><br />
+<code>git://github.com/stevekerrison/sw_swallow_etherboot</code></p>
+
+<p><code>git://github.com/xcore/sc_otp.git</code> - module_otp_board<br />
+<code>git://github.com/xcore/sc_util.git</code> - module_Slicekit_support</p>
+
+<p>And initialise and update all submodules in those directories</p>
+
+<p>Don't worry about the following error message since this build will not need to fully make.<br />
+<code>../src/test.c:189: error: too few arguments to function 'mii_reserve'</code></p>
+
+<p>The app in swallow_etherboot is the one you run on the ethernet board. You'll have to tweak &quot;demo.xc&quot; if you want to change the board layout.</p>
+
+<p>The reset wire needs to be from pin 15 on the grid's top-left XTAG connector, onto the port specified in demo.xc</p>
+
+
+
+<h2 id="SwallowToolDownload-Pythonethernetscripts">Python ethernet scripts</h2>
+
+<p><a href="attachments/70257120/70353203.py" data-linked-resource-id="70353203" data-linked-resource-version="1" data-linked-resource-type="attachment" data-linked-resource-default-alias="simple_processing_test-2.py" data-linked-resource-content-type="text/x-python" data-linked-resource-container-id="70257120" data-linked-resource-container-version="4">simple_processing_test-2.py</a><br />
+<a href="attachments/70257120/70353204.py" data-linked-resource-id="70353204" data-linked-resource-version="1" data-linked-resource-type="attachment" data-linked-resource-default-alias="simple_processing_test.py" data-linked-resource-content-type="text/x-python" data-linked-resource-container-id="70257120" data-linked-resource-container-version="4">simple_processing_test.py</a><br />
+<a href="attachments/70257120/70353205.py" data-linked-resource-id="70353205" data-linked-resource-version="1" data-linked-resource-type="attachment" data-linked-resource-default-alias="test.py" data-linked-resource-content-type="text/x-python" data-linked-resource-container-id="70257120" data-linked-resource-container-version="4">test.py</a><br />
+<a href="attachments/70257120/70353206.py" data-linked-resource-id="70353206" data-linked-resource-version="1" data-linked-resource-type="attachment" data-linked-resource-default-alias="debug_test.py" data-linked-resource-content-type="text/x-python" data-linked-resource-container-id="70257120" data-linked-resource-container-version="4">debug_test.py</a></p>
+
+
+<h2 id="SwallowToolDownload-Debugscripts">Debug scripts</h2>
+
+<p>The following scripts allow run-time debug over the etherboot module. </p>
+
+<p>a) <a href="attachments/70257120/70353207.sh" data-linked-resource-id="70353207" data-linked-resource-version="1" data-linked-resource-type="attachment" data-linked-resource-default-alias="debug-swallow.sh" data-linked-resource-content-type="application/x-shellscript" data-linked-resource-container-id="70257120" data-linked-resource-container-version="4">Bash debug script </a><br />
+Run in directory with the built multi-core binary whilst a program is running and it will display all cores' currently running functions and instruction being executed. Note this does not affect the running program.</p>
+
+
+<p>b) <a href="attachments/70257120/70353208.py" data-linked-resource-id="70353208" data-linked-resource-version="1" data-linked-resource-type="attachment" data-linked-resource-default-alias="debug-swallow-bylink.py" data-linked-resource-content-type="text/x-python" data-linked-resource-container-id="70257120" data-linked-resource-container-version="4">Python debug script </a></p>
+                    </div>
+
+                                        <div class="pageSection group">
+                        <div class="pageSectionHeader">
+                            <h2 id="attachments" class="pageSectionTitle">Attachments:</h2>
+                        </div>
+
+                        <div class="greybox" align="left">
+                                                            <img src="images/icons/bullet_blue.gif" height="8" width="8" alt=""/>
+                                <a href="attachments/70257120/70353203.py">simple_processing_test-2.py</a> (text/x-python)
+                                <br/>
+                                                            <img src="images/icons/bullet_blue.gif" height="8" width="8" alt=""/>
+                                <a href="attachments/70257120/70353204.py">simple_processing_test.py</a> (text/x-python)
+                                <br/>
+                                                            <img src="images/icons/bullet_blue.gif" height="8" width="8" alt=""/>
+                                <a href="attachments/70257120/70353205.py">test.py</a> (text/x-python)
+                                <br/>
+                                                            <img src="images/icons/bullet_blue.gif" height="8" width="8" alt=""/>
+                                <a href="attachments/70257120/70353206.py">debug_test.py</a> (text/x-python)
+                                <br/>
+                                                            <img src="images/icons/bullet_blue.gif" height="8" width="8" alt=""/>
+                                <a href="attachments/70257120/70353207.sh">debug-swallow.sh</a> (application/x-shellscript)
+                                <br/>
+                                                            <img src="images/icons/bullet_blue.gif" height="8" width="8" alt=""/>
+                                <a href="attachments/70257120/70353208.py">debug-swallow-bylink.py</a> (text/x-python)
+                                <br/>
+                                                    </div>
+                    </div>
+                    
+                                                      
+                </div>             </div> 
+            <div id="footer" role="contentinfo">
+                <section class="footer-body">
+                    <p>Document generated by Confluence on Jun 03, 2015 14:10</p>
+                    <div id="footer-logo"><a href="http://www.atlassian.com/">Atlassian</a></div>
+                </section>
+            </div>
+        </div>     </body>
+</html>

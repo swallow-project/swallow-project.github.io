@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Swallow Project : JTAG configuration</title>
+        <link rel="stylesheet" href="styles/site.css" type="text/css" />
+        <META http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    </head>
+
+    <body class="theme-default aui-theme-default">
+        <div id="page">
+            <div id="main" class="aui-page-panel">
+                <div id="main-header">
+                    <div id="breadcrumb-section">
+                        <ol id="breadcrumbs">
+                            <li class="first">
+                                <span><a href="index.html">Swallow Project</a></span>
+                            </li>
+                                                    <li>
+                                <span><a href="Introduction-to-the-Swallow-system_63571758.html">Introduction to the Swallow system</a></span>
+                            </li>
+                                                </ol>
+                    </div>
+                    <h1 id="title-heading" class="pagetitle">
+                                                <span id="title-text">
+                            Swallow Project : JTAG configuration
+                        </span>
+                    </h1>
+                </div>
+
+                <div id="content" class="view">
+                    <div class="page-metadata">
+                        
+        
+    
+        
+    
+        
+    
+            Created by <span class='author'> Simon Hollis</span>, last modified by <span class='editor'> Steven Kerrison</span> on Jan 20, 2014
+                        </div>
+                    <div id="main-content" class="wiki-content group">
+                    <h1 id="JTAGconfiguration-Routesetting">Route setting</h1>
+
+<p>Each board contains a 16-position switch for configuring the multiplexers that direct the JTAG either around the board, or out over the external connections. The multiplexer selection is encoded with a 4-bit value, where the bits representing Top, Right, Bottom and Left are encoded as 0bLBRT. A bit set to '1' routes the JTAG within the board; a '0' out over the link in that particular direction. So for example, the position '5' (0b0101) would assume the JTAG chain moves through the left and right of the board, but not up or down. The edge to which the XTAG connector should also have its bit set to 0.</p>
+
+<p>In a grid, imagining several boards laid flat, the XTAG must be plugged into the top-left board, move along the top row, then down to the next row and along that, and continuing as shown in the diagram further down this page.</p>
+
+<h1 id="JTAGconfiguration-JTAGIDs">JTAG IDs</h1>
+
+<p>The processor node IDs seen over JTAG from an XTAG-2 connected to a Swallow board differ from the node IDs that are seen by software running over them.<br />
+In the following diagrams, the blue arcs show the JTAG chain and numbers show the core ID as shown by gdb stdcore[]. </p>
+
+<p>In black are the node ids as seen by software, which is equal to what a call to <code>get_core_id()</code> returns.</p>
+
+
+<h3 id="JTAGconfiguration-Singleboard">Single board</h3>
+
+<p><span class="confluence-embedded-file-wrapper"><img class="confluence-embedded-image confluence-content-image-border" src="attachments/63571953/63930524.png" data-image-src="attachments/63571953/63930524.png" data-unresolved-comment-count="0" data-linked-resource-id="63930524" data-linked-resource-version="1" data-linked-resource-type="attachment" data-linked-resource-default-alias="jtag-single.png" data-base-url="https://wikis.bris.ac.uk" data-linked-resource-content-type="image/png" data-linked-resource-container-id="63571953" data-linked-resource-container-version="6"></span></p>
+
+
+<h3 id="JTAGconfiguration-6boards,arranged3hx2w">6 boards, arranged 3h x 2w</h3>
+
+<p><span class="confluence-embedded-file-wrapper"><img class="confluence-embedded-image confluence-content-image-border" src="attachments/63571953/63930525.png" data-image-src="attachments/63571953/63930525.png" data-unresolved-comment-count="0" data-linked-resource-id="63930525" data-linked-resource-version="1" data-linked-resource-type="attachment" data-linked-resource-default-alias="jtag-3x2.png" data-base-url="https://wikis.bris.ac.uk" data-linked-resource-content-type="image/png" data-linked-resource-container-id="63571953" data-linked-resource-container-version="6"></span></p>
+
+
+                    </div>
+
+                                        <div class="pageSection group">
+                        <div class="pageSectionHeader">
+                            <h2 id="attachments" class="pageSectionTitle">Attachments:</h2>
+                        </div>
+
+                        <div class="greybox" align="left">
+                                                            <img src="images/icons/bullet_blue.gif" height="8" width="8" alt=""/>
+                                <a href="attachments/63571953/63930524.png">jtag-single.png</a> (image/png)
+                                <br/>
+                                                            <img src="images/icons/bullet_blue.gif" height="8" width="8" alt=""/>
+                                <a href="attachments/63571953/63930525.png">jtag-3x2.png</a> (image/png)
+                                <br/>
+                                                    </div>
+                    </div>
+                    
+                                                      
+                </div>             </div> 
+            <div id="footer" role="contentinfo">
+                <section class="footer-body">
+                    <p>Document generated by Confluence on Jun 03, 2015 14:10</p>
+                    <div id="footer-logo"><a href="http://www.atlassian.com/">Atlassian</a></div>
+                </section>
+            </div>
+        </div>     </body>
+</html>

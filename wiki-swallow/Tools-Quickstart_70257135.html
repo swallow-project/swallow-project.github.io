@@ -1,0 +1,148 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Swallow Project : Tools Quickstart</title>
+        <link rel="stylesheet" href="styles/site.css" type="text/css" />
+        <META http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    </head>
+
+    <body class="theme-default aui-theme-default">
+        <div id="page">
+            <div id="main" class="aui-page-panel">
+                <div id="main-header">
+                    <div id="breadcrumb-section">
+                        <ol id="breadcrumbs">
+                            <li class="first">
+                                <span><a href="index.html">Swallow Project</a></span>
+                            </li>
+                                                    <li>
+                                <span><a href="Introduction-to-the-Swallow-system_63571758.html">Introduction to the Swallow system</a></span>
+                            </li>
+                                                    <li>
+                                <span><a href="Using-the-tool-chain_63571770.html">Using the tool chain</a></span>
+                            </li>
+                                                </ol>
+                    </div>
+                    <h1 id="title-heading" class="pagetitle">
+                                                <span id="title-text">
+                            Swallow Project : Tools Quickstart
+                        </span>
+                    </h1>
+                </div>
+
+                <div id="content" class="view">
+                    <div class="page-metadata">
+                        
+        
+    
+        
+    
+        
+    
+            Created by <span class='author'> Simon Hollis</span>, last modified on Dec 01, 2014
+                        </div>
+                    <div id="main-content" class="wiki-content group">
+                    <h2 id="ToolsQuickstart-Runningetherboot">Running etherboot</h2>
+
+<p>1) Compile the etherboot code:</p>
+
+<p>In <code>app_swallow_etherboot/src/demo.xc</code></p>
+
+<p>Find the file's struct <code>struct swallow_xlinkboot_cfg</code></p>
+<ul class="alternate">
+	<li>set boards_w and boards_h</li>
+</ul>
+
+
+<p>2)  make <code>app_swallow_etherboot</code>: <code>cd sw_swallow_etherboot ; make</code></p>
+
+<p>3) Verify that the ethernet board is connected to USB and power: <code>xrun -l</code> — should show &quot;L1[0]&quot; present.</p>
+
+<p>4a) Run on ethernet board: <code>xrun --io app_swallow_etherboot/bin/swallow_etherboot.xe</code></p>
+
+<p>4b) Connect ethernet cable and ensure PC has IP on subnet <code>192.168.128.xxx</code>, and is NOT <code>192.168.128.3</code></p>
+
+<p>4a) Ping <code>192.168.128.3</code> - should work</p>
+
+<p>4b) Or telnet to <code>192.168.128.3</code></p>
+
+<h2 id="ToolsQuickstart-Tobuildsoftware">To build software</h2>
+
+<p>1) Make some code.</p>
+<ul>
+	<li>remember that the main function must be in a separate file.</li>
+</ul>
+
+
+<ul>
+	<li><code>int main()</code> must include:</li>
+</ul>
+
+
+<p><code>#include &lt;platform.h&gt;</code><br />
+<code>#define MCMAIN</code><br />
+<code>#include &quot;mcsc_chan.h&quot;</code><br />
+<code>#include &quot;yourCode.h&quot;</code></p>
+
+<p>2) RTFR in tool_xmp16_manycore to run the tool:<br />
+swallow-mcsc.py manycoremain.xc [extra files] [compiler parameters]<br />
+(remember to add the path).</p>
+
+<p>2a) e.g with optimised flags: <code>swallow-mcsc.py mcmain.xc ledtest.xc -O3 -o test.sgb</code></p>
+
+<h2 id="ToolsQuickstart-Bootsoftware">Boot software</h2>
+
+<p>1) Download binary using tftp</p>
+
+<p><code>tftp&gt; connect 192.168.128.3 69</code><br />
+<code>tftp&gt; mode binary</code><br />
+<code>tftp&gt; put Swallow_V2-ID_LEDs.sgb</code></p>
+
+
+<p>2) (Optional): Read back booted board configuration</p>
+
+<p><code>tftp&gt; get board_dims</code></p>
+
+
+
+<h2 id="ToolsQuickstart-Streamingdatainandout">Streaming data in and out</h2>
+
+<h3 id="ToolsQuickstart-Togetethernetp2pworking:">To get ethernet p2p working:</h3>
+
+<p>1) sudo arping -c 1 -A -I eth0 192.168.128.2<br />
+2) tftp code<br />
+3) run python send/receive script.</p>
+
+
+<h3 id="ToolsQuickstart-ForstreamingfromPCtoboard:">For streaming from PC to board:</h3>
+<p>Output on port 5b5b: <code>nc -lku 192.168.128.2 $((0x5b5b))</code></p>
+
+
+<h4 id="ToolsQuickstart-Currentcode:">Current code:</h4>
+
+<ul>
+	<li>Uses JTAG debug, since xscope seems to hang.</li>
+	<li>test.py sends the strings in 'pkt' definition in the code to port 0x1b1b</li>
+	<li>This then prints onto the screen.</li>
+</ul>
+
+
+
+<ul>
+	<li>Ensure that the endpoint is declared streaming and that the test.py script targets the correct ID (which can be printed from the grid_example code).</li>
+</ul>
+
+
+                    </div>
+
+                    
+                                                      
+                </div>             </div> 
+            <div id="footer" role="contentinfo">
+                <section class="footer-body">
+                    <p>Document generated by Confluence on Jun 03, 2015 14:10</p>
+                    <div id="footer-logo"><a href="http://www.atlassian.com/">Atlassian</a></div>
+                </section>
+            </div>
+        </div>     </body>
+</html>
