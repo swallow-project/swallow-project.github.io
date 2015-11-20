@@ -1,0 +1,107 @@
+/* CSS reset */
+
+/* http://meyerweb.com/eric/tools/css/reset/ 
+   v2.0 | 20110126
+   License: none (public domain)
+*/
+
+html, body, div, span, applet, object, iframe,
+h1, h2, h3, h4, h5, h6, p, blockquote, pre,
+a, abbr, acronym, address, big, cite, code,
+del, dfn, em, img, ins, kbd, q, s, samp,
+small, strike, strong, sub, sup, tt, var,
+b, u, i, center,
+dl, dt, dd, ol, ul, li,
+fieldset, form, label, legend,
+table, caption, tbody, tfoot, thead, tr, th, td,
+article, aside, canvas, details, embed, 
+figure, figcaption, footer, header, hgroup, 
+menu, nav, output, ruby, section, summary,
+time, mark, audio, video {
+	margin: 0;
+	padding: 0;
+	border: 0;
+	font-size: 100%;
+	font: inherit;
+	vertical-align: baseline;
+}
+/* HTML5 display-role reset for older browsers */
+article, aside, details, figcaption, figure, 
+footer, header, hgroup, menu, nav, section {
+	display: block;
+}
+body {
+	line-height: 1;
+}
+ol, ul {
+	list-style: none;
+}
+blockquote, q {
+	quotes: none;
+}
+blockquote:before, blockquote:after,
+q:before, q:after {
+	content: '';
+	content: none;
+}
+table {
+	border-collapse: collapse;
+	border-spacing: 0;
+}
+
+
+/**
+ * For modern browsers
+ * 1. The space content is one way to avoid an Opera bug when the
+ *    contenteditable attribute is included anywhere else in the document.
+ *    Otherwise it causes space to appear at the top and bottom of elements
+ *    that are clearfixed.
+ * 2. The use of `table` rather than `block` is only necessary if using
+ *    `:before` to contain the top-margins of child elements.
+ */
+.cf:before,
+.cf:after {
+    content: " "; /* 1 */
+    display: table; /* 2 */
+}
+
+.cf:after {
+    clear: both;
+}
+
+/**
+ * For IE 6/7 only
+ * Include this rule to trigger hasLayout and contain floats.
+ */
+.cf {
+    *zoom: 1;
+}
+
+
+/**************** We got style... ***************/
+
+html { background: #eee; font-family: serif;}
+body { width: 800px; margin: 5ex auto; background: #fff; border-radius: 1em;
+    border: 1px solid #ccc; }
+main { clear: both; padding: 0 0.5em 0 0.5em; }
+header img { border-top-left-radius: 1em; float: left; }
+header h1 { font-weight: bold; font-size: 1.5em; display: block; height: 50px; margin-left: 183px; padding-top: 2px; }
+header ul { height: 21px; border-top: 1px solid #ccc; border-bottom: 1px solid #ccc; display: flex;
+    background: #eee; }
+header ul li { display: inline-block; padding: 2px 5px 2px 4px; border-right: 1px solid #ccc; }
+header ul li:hover { background: #fff; }
+header a { color: black; text-decoration: none; }
+p { margin: 0.5em 0 0.5em 0; }
+h2 { font-weight: bold; font-size: 1.1em; margin: 0.5em 0 0.5em 0; clear: both; }
+h3 { font-weight: bold; margin: 0.33em 0 0.33em 0; clear: both; }
+article img { border: 1px solid #aaa; }
+main ul li { list-style: circle; margin-left: 2em; }
+ol.news li { border: 1px solid #ddd; margin-top: 0.25em; margin-bottom: 0.25em; padding: 0 0.5em 0 0.5em;
+    background: #f5f5f5; }
+main ol.num li { list-style: decimal; margin-left: 2em; }
+ul.people { margin-bottom: 0.5em; }
+ul.people li, ul.gallery li { list-style: none; margin: 0 1em 0 0; display: inline-block; }
+#researchers h3, #researchers ul, #photos ul { text-align: center; }
+footer { background: #ddd; border-bottom-left-radius: 1em; border-bottom-right-radius: 1em; 
+    text-align: center; border-top: 1px solid #ccc; margin-top: 2em; font-size: 0.75em;
+    padding: 0.25em 0 0.25em 0; }
