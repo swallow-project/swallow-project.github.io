@@ -92,7 +92,7 @@ header ul li { display: inline-block; padding: 2px 5px 2px 4px; border-right: 1p
 header ul li:hover { background: #fff; }
 header a { color: black; text-decoration: none; }
 p { margin: 0.5em 0 0.5em 0; }
-h2 { font-weight: bold; font-size: 1.1em; margin: 0.5em 0 0.5em 0; clear: both; }
+h2 { font-weight: bold; font-size: 1.25em; margin: 1em 0 1em 0; clear: both; }
 h3 { font-weight: bold; margin: 0.33em 0 0.33em 0; clear: both; }
 article img { border: 1px solid #aaa; }
 main ul li { list-style: circle; margin-left: 2em; }
